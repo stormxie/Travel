@@ -53,10 +53,10 @@ export default {
 <style lang='stylus' scoped>
   @import '~style/mixins.styl'
   .title
-    background-color #eee
     margin-top .2rem
+    background-color #eee
     line-height .8rem
-    padding-left .3rem
+    text-indent .2rem
   .item
     overflow hidden
     display flex
