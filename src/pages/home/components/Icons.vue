@@ -2,11 +2,7 @@
   <div class="icons">
     <swiper :option="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
-        <div 
-          v-for="item of page" 
-          :key="item.id" 
-          class="icon"
-        >
+        <div v-for="item of page" :key="item.id" class="icon">
           <div class="icon-img">
             <img class="icon-img-content" :src="item.imgUrl">
           </div>
@@ -24,8 +20,7 @@ export default {
   data () {
     return {
       swiperOption: {
-        autoplay: false,
-        loop: true
+        autoplay: false
       },
       iconList: [{
         id: '0001',
@@ -89,7 +84,7 @@ export default {
     height 0
     padding-bottom 50%
   .icons
-    margin-top .1rem
+    margin .1rem 0
     .icon
       position relative
       float left
@@ -107,9 +102,14 @@ export default {
         box-sizing border-box
         padding .1rem
         .icon-img-content
+          position absolute
           display block
-          margin 0 auto
-          height 100%
+          margin auto
+          height 60%
+          top 0
+          bottom 0
+          left 0
+          right 0
       .icon-desc
         position absolute
         left 0
