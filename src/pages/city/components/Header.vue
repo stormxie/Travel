@@ -1,8 +1,10 @@
 <template>
     <div class="header">
-        <div class="header-icon">
-            <span class="iconfont back-icon">&#xe624;</span>
-        </div>
+        <router-link to="/">
+            <div class="header-icon">
+                <span class="iconfont back-icon">&#xe624;</span>
+            </div>
+        </router-link>
         <div class="header-content">
             城市选择
         </div>
@@ -29,6 +31,7 @@ export default {
     font-size .32rem
     color #fff
     .header-icon
+      color #fff
       float left
       padding-left .14rem
       .back-icon
