@@ -1,17 +1,75 @@
 <template>
+  <div>
     <div class="search">
-        <input class="search-input" type="text" placeholder="输入城市名称或拼音">
+      <input v-model="keyword" class="search-input" type="text" placeholder="输入城市名称或拼音">
     </div>
+    <div ref="wrapper" class="wrapper" v-show="hasInput">
+      <ul class="searchList">
+        <li v-if="noResult"  class="city">没有找到匹配数据</li>
+        <li class="city border-bottom" v-for="item of searchList" :key="item.id">{{item.name}}</li>
+      </ul>
+    </div>
+  </div>
+
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 export default {
-  name: 'Search'
+  name: 'Search',
+  props: {
+    cities: Object
+  },
+  data () {
+    return {
+      keyword: '',
+      searchList: [],
+      timer: null
+    }
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.wrapper)
+  },
+  computed: {
+    noResult () {
+      setTimeout(() => {
+        return !this.searchList.length
+      }, 100)
+    },
+    hasInput () {
+      return this.keyword
+    }
+  },
+  watch: {
+    keyword () {
+      if (this.timer) {
+        clearTimeout()
+      }
+      if (!this.keyword.length) {
+        this.searchList = []
+        return
+      }
+      this.timer = setTimeout(() => {
+        const list = []
+        for (let i in this.cities) {
+          this.cities[i].forEach(element => {
+            if (element.spell.indexOf(this.keyword) > -1 || element.name.indexOf(this.keyword) > -1) {
+              list.push(element)
+            }
+          });
+        }
+        this.searchList = list
+      }, 100)
+    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
   @import '~style/varibles.styl'
+  .border-bottom
+    &:before
+      border-color #ccc
   .search
     background $bgColor
     height .62rem
@@ -21,4 +79,19 @@ export default {
       border-radius .06rem
       height .62rem
       width 100%
+  .wrapper
+    overflow hidden
+    position absolute
+    top 1.6rem
+    right 0
+    bottom 0
+    left 0
+    background #fff
+    z-index 1
+    .searchList
+      .city
+        padding-left .2rem
+        height .6rem
+        line-height .6rem
+        font-size .28rem
 </style>

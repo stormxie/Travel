@@ -37,8 +37,8 @@ export default {
   },
   name: 'List',
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper, {
-      click: true
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper)
     })
   },
   watch: {
