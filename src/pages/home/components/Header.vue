@@ -43,7 +43,7 @@ export default {
         font-size .4rem
     .header-right
       min-width: 1.04rem
-      padding 0 .1rem 
+      padding 0 .1rem
       float: right
       text-align center
       line-height .86rem
