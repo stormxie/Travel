@@ -1,23 +1,31 @@
 <template>
   <div>
+    <detail-header></detail-header>
     <detail-banner :sightName="sightName" :bannerImg="bannerImg" :galleryImgs="galleryImgs"></detail-banner>
+    <detail-list :list="list"></detail-list>
+    <div class="content"></div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import DetailBanner from './components/Banner'
+import DetailHeader from './components/Header'
+import DetailList from './components/List'
 
 export default {
   name: 'Detail',
   components: {
-    DetailBanner
+    DetailBanner,
+    DetailHeader,
+    DetailList
   },
   data () {
     return {
       sightName: '',
       bannerImg: '',
-      galleryImgs: []
+      galleryImgs: [],
+      list: []
     }
   },
   mounted () {
@@ -25,8 +33,11 @@ export default {
   },
   methods: {
     getDetailInfo () {
-      axios.get('/api/detail.json')
-        .then(this.getDetailInfoSucc)
+      axios.get('/api/detail.json', {
+        params: {
+          id: this.$route.params.id
+        }
+      }).then(this.getDetailInfoSucc)
     },
     getDetailInfoSucc (res) {
       res = res.data
@@ -35,8 +46,14 @@ export default {
         this.sightName = data.sightName
         this.bannerImg = data.bannerImg
         this.galleryImgs = data.galleryImgs
+        this.list = data.categoryList
       }
     }
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+  .content
+    height 40rem
+</style>

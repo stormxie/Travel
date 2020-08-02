@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="banner" @click="handleBannerClick">
       <div class="backicon"></div>
       <div><img class="banner-img" :src="bannerImg"></div>
@@ -17,7 +17,7 @@
 <script>
 import Gallery from 'common/gallery/Gallery'
 export default {
-  name: 'Banner',
+  name: 'DetailBanner',
   props: {
     sightName: String,
     bannerImg: String,
