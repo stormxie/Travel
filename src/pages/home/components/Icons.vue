@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper :option="swiperOption">
+    <swiper :options="swiperOptions">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div v-for="item of page" :key="item.id" class="icon">
           <div class="icon-img">
@@ -22,7 +22,7 @@ export default {
   name: 'HomeIcon',
   data () {
     return {
-      swiperOption: {
+      swiperOptions: {
         autoplay: false
       }
     }
