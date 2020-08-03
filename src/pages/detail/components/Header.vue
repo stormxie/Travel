@@ -30,6 +30,9 @@ export default {
   mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
   methods: {
     handleScroll () {
       let top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
