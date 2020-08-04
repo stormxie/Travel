@@ -57,7 +57,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/project', //前后端联调时，webpack打包后，资源放在后端服务器的路径，需要和这里的路径对应。比如这里对应的就是资源打包后放在后端服务器的/project路径
 
     /**
      * Source Maps
