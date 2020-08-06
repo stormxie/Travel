@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang='stylus' scoped>
-  @import '~style/mixins.styl'
+  @import '~styles/mixins.styl'
   .title
     background-color #eee
     text-indent .2rem

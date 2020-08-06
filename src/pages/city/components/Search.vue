@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import '~style/varibles.styl'
+  @import '~styles/varibles.styl'
   .border-bottom
     &:before
       border-color #ccc

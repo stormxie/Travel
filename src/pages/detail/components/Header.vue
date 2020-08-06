@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import '~style/varibles.styl'
+  @import '~styles/varibles.styl'
   .header
     color #fff
     text-align center

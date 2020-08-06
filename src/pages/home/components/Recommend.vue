@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang='stylus' scoped>
-  @import '~style/mixins.styl'
+  @import '~styles/mixins.styl'
   .title
     margin-top .2rem
     background-color #eee
